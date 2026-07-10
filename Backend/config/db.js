@@ -1,11 +1,10 @@
-const mongoose = require('mongoose');
+const { initDb } = require('./jsonDb');
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/alphachatgpt');
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
+    initDb();
   } catch (error) {
-    console.error(`Error: ${error.message}`);
+    console.error(`Database Init Error: ${error.message}`);
     process.exit(1);
   }
 };
