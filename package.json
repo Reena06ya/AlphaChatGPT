@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "AlphaChatGPT workspace root",
   "scripts": {
+    "start": "node Backend/server.js",
+    "build": "npm install --prefix Backend",
     "install-all": "npm install --prefix Backend && npm install --prefix Frontend",
     "dev-backend": "npm run dev --prefix Backend",
     "dev-frontend": "npm run dev --prefix Frontend"
