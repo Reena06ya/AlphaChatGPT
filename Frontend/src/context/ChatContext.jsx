@@ -158,7 +158,8 @@ export function ChatProvider({ children }) {
     setAbortController(controller);
 
     try {
-      const response = await fetch(`http://localhost:5000/api/chat/${currentChatId}/message`, {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+      const response = await fetch(`${apiUrl}/chat/${currentChatId}/message`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -265,7 +266,8 @@ export function ChatProvider({ children }) {
 
   const exportChat = (chatId, format) => {
     // Simple window download triggers GET request
-    window.open(`http://localhost:5000/api/chat/${chatId}/export/${format}?token=${token}`, '_blank');
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+    window.open(`${apiUrl}/chat/${chatId}/export/${format}?token=${token}`, '_blank');
   };
 
   return (
